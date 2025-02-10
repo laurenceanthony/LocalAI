@@ -30,9 +30,9 @@ https://huggingface.co/models
 
 In theory, you can also use Hugging Face libraries to download and run AI models locally. However, begginers to local AI are likely to find this challenging for two main reasons:
 - **Information on model sizes is not immediately clear**
-  This means that you may attempt to download a model that is too big to fit into the RAM of your local computer and will not work.
+This means that you may attempt to download a model that is too big to fit into the RAM of your local computer and will not work.
 
 - **Code to run the models locally can be out-of-date**
-  This means that when you attempt to download and run the model, the code throws an error or doesn't produce any output.
+This means that when you attempt to download and run the model, the code throws an error or doesn't produce any output.
 
-The solution is to use a more user-friendly interface to AI models
+The solution is to use a more user-friendly interface to locate, download, and run AI models.
