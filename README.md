@@ -7,18 +7,18 @@ Running open-source/open-weight AI models ((and even proprietary models) in a lo
 ## Advantages of Local AI
 Local AI addresses several of common concerns about AI in general:
 
-- **More Control, Fewer Hallucinations**  
-  Local models can be fine-tuned on curated, domain-specific data, reducing the likelihood of hallucinations and ensuring outputs align better with user intent.  
+- **Fewer Hallucinations**  
+  Local models can be fine-tuned on curated, domain-specific data, potentially reducing the likelihood of hallucinations and ensuring outputs align better with user intent.  
 
-- **Privacy and Consent**  
+- **Increased Privacy and Consent**  
   Since data never leaves the local machine, privacy risks are minimized. Users can train models on datasets they legally own or have permission to use, avoiding ethical concerns around data scraping.  
 
-- **Bias Reduction**  
+- **Reduced Bias**  
   With full access to model weights and training data (for pre-training and/or post-training), developers can audit and modify biases rather than relying on opaque, corporate-controlled AI systems.  
 
 - **Sustainable Deployment**  
-  While training large models still requires resources, running smaller, efficient models locally can be cost-effective and energy-efficient, reducing dependence on cloud computing.  
+  While training large models still requires resources, running (and potentially training) smaller, efficient models locally can be cost-effective and energy-efficient, reducing dependence on cloud computing.  
 
 - **Improved Security**  
-  Running AI in a private setting eliminates the risk of data exposure through cloud services and reduces the likelihood of AI-generated phishing or other malicious content being used without oversight.  
+  Running AI in a private setting eliminates the risk of data exposure through cloud services.  
 
