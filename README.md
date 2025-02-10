@@ -28,11 +28,13 @@ Local AI addresses several of common concerns about AI in general:
 [Hugging Face](https://huggingface.co/) is a leading platform for exploring, developing, and sharing open-source AI models. It provides a vast repository of pre-trained models across various domains, including natural language processing, computer vision, and audio processing. By browsing the [**Models**](https://huggingface.co/models) hub, you can find the latest open-weight models and compare their performance. The platform also offers [**datasets**](https://huggingface.co/datasets) and other resources, making it an essential resource for researchers, developers, and AI enthusiasts. 
 https://huggingface.co/models
 
-In theory, you can also use Hugging Face libraries to download and run AI models locally. However, begginers to local AI are likely to find this challenging for two main reasons:
+In theory, you can also use Hugging Face libraries to download and run AI models locally. However, beginners to local AI are likely to find this challenging for two main reasons:
 - **Information on model sizes is not immediately clear**
+
 This means that you may attempt to download a model that is too big to fit into the RAM of your local computer and will not work.
 
 - **Code to run the models locally can be out-of-date**
+
 This means that when you attempt to download and run the model, the code throws an error or doesn't produce any output.
 
 The solution is to use a more user-friendly interface to locate, download, and run AI models.
