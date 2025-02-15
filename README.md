@@ -232,7 +232,7 @@ The main Llamafile packaging tool can also be used to load and run existing loca
 This approach simplifies the process of sharing and running models across various systems without the need for complex setups or installations.
 
 
-  <img src="images/llamafile_banner.png" alt="Screenshot of Llama file banner" width="80%" />
+  <img src="images/llamafile_banner.png" alt="Screenshot of Llama file banner" width="200" />
 
 ### How to use Llamafile with LLM model weights included
 
