@@ -26,7 +26,7 @@ Local AI addresses several of common concerns about AI in general:
 
 ### DeepSeek-R1 and other open source/open weight models
 
-DeepSeek-R1 is an open-source large language model designed to excel in complex reasoning tasks across various domains, including mathematics, coding, and logical inference. This makes it an excellent model to download and star experiment with in a local context. 
+DeepSeek-R1 is an open-source large language model designed to excel in complex reasoning tasks across various domains, including mathematics, coding, and logical inference. This makes it an excellent model to download and star experiment with in a local context. You can read a paper describing the model [here](https://arxiv.org/pdf/2405.04434)
 
   ![Screenshot of DeepSeek paper](/images/deepseek_paper.png)
 
@@ -77,13 +77,54 @@ LM Studio is a powerful desktop application that allows users to run and experim
 
   ![Screenshot of LM Studio chat](/images/lmstudio_chat_response.png)
 
-- **Optional steps**
+- **Optional steps 1**
   Use the experimental Retrieval Augmented Generation (RAG) feature to add content from files into the context window of the model to query it.
 
   ![Screenshot of LM Studio rag](/images/lmstudio_rag.png)
 
 
-### Using Ollama to Discover, Download, and Run Local LLMs
+- **Optional steps 2**
+  LMStudio automatically starts a local server that serves the model. This allows you to use a standard script to interact with the model through API calls.
+
+    ```bash
+    import requests
+    import json
+
+    # Define the API endpoint (check LMStudio settings for the correct port)
+    API_URL = "http://localhost:1234/v1/completions"
+
+    # Define the request payload with streaming enabled
+    payload = {
+        "model": "lmstudio-community/deepseek-r1-distill-llama-8b",
+        "prompt": "What is the capital of France?",
+        "temperature": 0.6,
+        "stream": True  # Enable streaming
+    }
+
+    # Send the request with stream=True
+    response = requests.post(API_URL, json=payload, stream=True)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        print("Response:")
+        for line in response.iter_lines():
+            if line:
+                # Decode the line and parse JSON
+                decoded_line = line.decode("utf-8")
+                # Streaming responses start with 'data: '
+                if decoded_line.startswith("data: "):
+                    decoded_line = decoded_line[6:]  # Remove 'data: ' prefix
+                try:
+                    json_data = json.loads(decoded_line)
+                    print(json_data.get("choices", [{}])[
+                          0].get("text", ""), end="", flush=True)
+                except json.JSONDecodeError:
+                    pass  # Ignore invalid JSON lines
+    else:
+        print("Error:", response.status_code, response.text)
+  ```
+
+### Using Ollama to get up and running with large language models
 
 Ollama is a versatile tool that enables users to run and experiment with large language models (LLMs) locally. It offers a straightforward command-line interface for downloading, managing, and interacting with open-weight models without complex setups. Key features include **model discovery**, **simple model downloads**, and **customizable system prompts** to tailor model behavior. Ollama is suitable for both casual users and developers seeking to explore LLMs on their local machines.
 
@@ -127,4 +168,167 @@ Ollama is a versatile tool that enables users to run and experiment with large l
     > /bye
     ```
 
-To be continued...
+- **Optional steps 1**
+  Ollama automatically starts a local server that serves the model. This allows you to use a standard script to interact with the model through API calls. 
+
+    ```bash
+      import ollama
+
+
+      def main():
+          # model = "llama3.2"
+          model = "deepseek-r1:8b"
+          # model = "pirate_demo"
+          # model = "pirate_demo_deepseek"
+
+          prompt = "What is the capital of France?"
+          # Stream the response
+          for chunk in ollama.chat(model=model, messages=[{"role": "user", "content": prompt}], stream=True):
+              print(chunk["message"]["content"], end="", flush=True)
+
+          print()  # Newline after response
+
+
+      if __name__ == "__main__":
+          main()
+    ```
+
+  Notice that the script above utilizes the ollama python library, which greatly simplifies the code needed.
+
+## Making local AI models portable
+The methods above allow you to run LLMs locally, but they rely on applications like LLMStudio and Ollama. Sometimes it is useful to run LLMs in a completely portable manner, with all scripts, dependencies, and even the LLM itself wrapped into a single file executable that can be distributed to others giving them a one click solution. 
+
+### What is Llamafile?
+
+Llamafile is an open-source framework that packages open-weight LLMs into standalone executable files. These “llamafiles” are designed to run on multiple operating systems and hardware configurations without modification, making LLMs more accessible to a broader audience.
+
+The main Llamafile packaging tool can also be used to load and run existing local LLMs, providing an extremely lightweight, portable LLM distribution framework that can be used to build full-stack portable AI applications.
+
+This approach simplifies the process of sharing and running models across various systems without the need for complex setups or installations.
+
+  ![Screenshot of Ollama r1](/images/llamafile_banner.png)
+
+
+### How to use Llamafile with LLM model weights included
+
+To run the a 'llamafile' locally with LLM model weights included, follow these steps:
+
+1. **Download the Llamafile**
+
+   Download one of the pre-packaged 'lamafile' examples, e.g.,  [llava-v1.5-7b-q4.llamafile](https://huggingface.co/Mozilla/llava-v1.5-7b-llamafile/resolve/main/llava-v1.5-7b-q4.llamafile?download=true) (4.29 GB) from the [official repository](https://huggingface.co/Mozilla/llava-v1.5-7b-llamafile/blob/main/llava-v1.5-7b-q4.llamafile).
+
+2. **Prepare the File for Execution**
+
+   - **For macOS, Linux, or BSD Users:**
+
+     Open your terminal, navigate to the directory containing the downloaded file, and grant execution permissions:
+
+     ```bash
+     chmod +x llava-v1.5-7b-q4.llamafile
+     ```
+
+   - **For Windows Users:**
+
+     Rename the file to add the `.exe` extension:
+
+     ```bash
+      llava-v1.5-7b-q4.llamafile.exe
+     ```
+
+3. **Run the Llamafile**
+
+   Execute the file from your terminal:
+
+   - **macOS, Linux:**
+
+     ```bash
+     ./llava-v1.5-7b-q4.llamafile
+     ```
+
+   - **Windows:**
+     ```cmd
+     llava-v1.5-7b-q4.llamafile.exe
+     ```
+
+   Upon execution, a chat interface will appear in the terminal that you can use to interact with the model.
+
+![Screenshot of Ollama r1](/images/llamafile_running.png)
+
+   At the same time, a local web server will start, and your default browser should open automatically, displaying a chat interface that you can use to interact with the model. If it doesn't, manually open your browser and navigate to `http://localhost:8080`.
+
+  ![Screenshot of Ollama r1](/images/llamafile_server.png)
+
+4. **Terminate the Session**
+
+   When you're finished, return to your terminal and press `Ctrl+C` (Win/Linux) or `Cmd+C` (MacOS) to stop the Llamafile server.
+
+
+### How to use Llamafile with a separately downloaded LLM
+
+To use Llamafile with a separately downloaded LLM, follow these steps:
+
+1. **Download the Llamafile engine**
+
+   Download the latest version of Llamafile, e.g.,  [llamafile 0.9.0](https://github.com/Mozilla-Ocho/llamafile/releases/download/0.9.0/llamafile-0.9.0) (231 MB) from the [official repository](https://github.com/Mozilla-Ocho/llamafile/releases/).
+
+2. **Prepare the File for Execution**
+
+   - **For macOS, Linux, or BSD Users:**
+
+     Open your terminal, navigate to the directory containing the downloaded file, and grant execution permissions:
+
+     ```bash
+     chmod +x llamafile-0.9.0
+     ```
+
+   - **For Windows Users:**
+
+     Rename the file to add the `.exe` extension:
+
+     ```bash
+      llamafile-0.9.0.exe
+     ```
+
+3. **Run Llamafile with a local model**
+
+   Execute the Llamafile engine from your terminal specifying the path to your local model using the -m flag. Once convenient way to get the path to the model is through the Model browser of LMStudio:
+
+   - **macOS, Linux:**
+
+     ```bash
+     ./llamafile-0.9.0 -m YOUR_MODEL
+     ```
+
+     e.g.,
+
+     ```bash
+      % ./llamafile-0.9.0 -m /Users/laurenceanthony/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q4_K_M.gguf
+
+     ```
+
+
+   - **Windows:**
+     ```cmd
+      llamafile-0.9.0.exe -m YOUR_MODEL
+     ```
+
+     e.g.,
+
+     ```cmd
+     % ./llamafile-0.9.0.exe -m /Users/laurenceanthony/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q4_K_M.gguf
+     ```
+
+
+   Upon execution, a chat interface will appear in the terminal that you can use to interact with the model.
+
+![Screenshot of Ollama r1](/images/llamafile_r1.png)
+
+   As before, at the same time, a local web server will start, and your default browser should open automatically, displaying a chat interface that you can use to interact with the model. If it doesn't, manually open your browser and navigate to `http://localhost:8080`.
+
+4. **Terminate the Session**
+
+   When you're finished, return to your terminal and press `Ctrl+C` (Win/Linux) or `Cmd+C` (MacOS) to stop the Llamafile server.
+
+By streamlining the distribution and execution of LLMs, Llamafile enhances the portability of local AI models, making them more accessible and easier to deploy across diverse environments.
+
+
