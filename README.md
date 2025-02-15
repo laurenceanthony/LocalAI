@@ -2,7 +2,13 @@
 A repo for experiments in building, fine-tuning, and running open-source/open-weight AI models in a local, private, and sometimes portable context.
 
 ## Overview
-Running open-source/open-weight AI models ((and even proprietary models) in a local, private, and sometimes portable context offer significant advantages in security, efficiency, and accessibility. Running AI locally ensures that sensitive data stays private, reducing reliance on cloud services, and mitigating risks associated with data breaches. Running AI locally can also sometimes result in faster response times by eliminating network latency, making them ideal for real-time applications. Additionally, if the models are wrapped together with all the necessary dependencies to become truly portable, they can run on various devices, from laptops to mobile phones, enabling AI-powered solutions even in low-connectivity environments. In short, local AI gives users greater control and flexibility when working in both personal and enterprise environments regardless of whether they are online or offline.
+Running open-source/open-weight AI models (and even proprietary models) in a local, private, and sometimes portable context offer significant advantages in security, efficiency, and accessibility. 
+
+* Running AI locally ensures that sensitive data stays private, reducing reliance on cloud services, and mitigating risks associated with data breaches
+* Running AI locally can also sometimes result in faster response times by eliminating network latency, making them ideal for real-time applications. 
+* Additionally, if the models are wrapped together with all the necessary dependencies to become truly portable, they can run on various devices, from laptops to mobile phones, enabling AI-powered solutions even in low-connectivity environments.
+
+In short, local AI gives users greater control and flexibility when working in both personal and enterprise environments regardless of whether they are online or offline.
 
 ## Advantages of Local AI
 Local AI addresses several of common concerns about AI in general:
@@ -101,13 +107,13 @@ LM Studio is a powerful desktop application that allows users to run and experim
 
   ![Screenshot of LM Studio chat](/images/lmstudio_chat_response.png)
 
-- **Optional steps 1**
+- **Optional step 1**
   Use the experimental Retrieval Augmented Generation (RAG) feature to add content from files into the context window of the model to query it.
 
   ![Screenshot of LM Studio rag](/images/lmstudio_rag.png)
 
 
-- **Optional steps 2**
+- **Optional step 2**
   LMStudio automatically starts a local server that serves the model. This allows you to use a standard script to interact with the model through API calls.
 
     ```bash
@@ -192,7 +198,7 @@ Ollama is a versatile tool that enables users to run and experiment with large l
     > /bye
     ```
 
-- **Optional steps 1**
+- **Optional step 1**
   Ollama automatically starts a local server that serves the model. This allows you to use a standard script to interact with the model through API calls. 
 
     ```bash
@@ -236,6 +242,7 @@ This approach simplifies the process of sharing and running models across variou
 ### How to use Llamafile with LLM model weights included
 
 To run the a 'llamafile' locally with LLM model weights included, follow these steps:
+
 
 1. **Download the Llamafile**
 
