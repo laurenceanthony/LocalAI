@@ -62,9 +62,9 @@ In theory, you can also use Hugging Face libraries to download and run AI models
   This means that you may attempt to download a model that is too big to fit into the RAM of your local computer and will not work.
 
 - **Code to run the models locally can be out-of-date**<br>
-This means that when you attempt to download and run the model, the code throws an error or doesn't produce any output.
+This means that when you attempt to download and run the model, the provided code on Hugging Face throws an error or doesn't produce any output.
 
-    Here is example code to run models provided by Hugging face locally
+    Here is an example of (working) code to run models provided by Hugging face locally. You can also find this and other code examples in the [demos](/demos/) folder.
 
     ```bash
         from llama_cpp import Llama
@@ -89,7 +89,7 @@ This means that when you attempt to download and run the model, the code throws 
 
     ```
     
-The solution is to use a more user-friendly interface to locate, download, and run AI models.
+Rather than using the code provided by Hugging Face directly, an easier approach is to use user-friendly interface to locate, download, and run AI models.
 
 ### Using LM Studio to discover, download, and run local LLMs
 
