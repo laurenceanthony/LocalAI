@@ -186,7 +186,7 @@ Ollama is a versatile tool that enables users to run and experiment with large l
   ollama run deekseek-R1:8b
   ```
 
-  Once the model is ready, an interactive session will start where you can input prompts and receive responses from the model.
+  Once the model is ready, an interactive session will start where you can input prompts and receive responses from the model. Notice in the screenshot below how the DeepSeek-R1 model will start by producing <think> tags which reveal its inner reasoning monologue, before eventually displaying the response to the prompt.
   
     ![Screenshot of Ollama r1](/images/ollama_chat.png)
 
