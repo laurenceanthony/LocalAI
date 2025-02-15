@@ -180,13 +180,13 @@ Ollama is a versatile tool that enables users to run and experiment with large l
   ollama run [model_name]
   ```
 
-  Replace [model_name] with the specific model you wish to download, such as deekseek-R1:8b. This command downloads the model onto your machine.
+  Replace [model_name] with the specific model you wish to download, such as deekseek-R1:8b.
 
   ```bash
   ollama run deekseek-R1:8b
   ```
 
-  This will start an interactive session where you can input prompts and receive responses from the model.
+  Once the model is ready, an interactive session will start where you can input prompts and receive responses from the model.
   
     ![Screenshot of Ollama r1](/images/ollama_chat.png)
 
