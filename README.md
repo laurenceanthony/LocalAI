@@ -28,8 +28,7 @@ Local AI addresses several of common concerns about AI in general:
 
 DeepSeek-R1 is an open-source large language model designed to excel in complex reasoning tasks across various domains, including mathematics, coding, and logical inference. This makes it an excellent model to download and star experiment with in a local context. You can read a paper describing the model [here](https://arxiv.org/pdf/2405.04434)
 
-
-  <img src="images/deepseek_paper.png" alt="Screenshot of DeepSeek paper" width="80%" />
+  ![Screenshot of DeepSeek paper](/images/deepseek_paper.png)
 
 Key features include:
 
@@ -37,7 +36,7 @@ Key features include:
 
 - **High Performance in Reasoning Benchmarks**: Demonstrates state-of-the-art results in various benchmarks, showcasing proficiency in logical inference, chain-of-thought reasoning, and real-time decision-making.
 
-  <img src="images/deepseek_performance.png" alt="Screenshot of DeepSeek performance" width="80%" />
+  ![Screenshot of DeepSeek performance](/images/deepseek_performance.png)
 
 - **Open-Weight Accessibility**: Released under the MIT license, allowing full transparency and customization, enabling the community to leverage model weights and outputs for fine-tuning and distillation.  
 
@@ -153,7 +152,7 @@ LM Studio is a powerful desktop application that allows users to run and experim
 
 Ollama is a versatile tool that enables users to run and experiment with large language models (LLMs) locally. It offers a straightforward command-line interface for downloading, managing, and interacting with open-weight models without complex setups. Key features include **model discovery**, **simple model downloads**, and **customizable system prompts** to tailor model behavior. Ollama is suitable for both casual users and developers seeking to explore LLMs on their local machines.
 
-  <img src="images/ollama_home.png" alt="Screenshot of Ollama" width="300" />
+  ![Screenshot of Ollama](/images/ollama_home.png)
 
 - **Step 1**  
   Download and install Ollama from the [official website](https://ollama.com/). Choose the installer that matches your operating system—macOS, Linux, or Windows. After installation, open your command-line interface (CLI).
@@ -231,8 +230,8 @@ The main Llamafile packaging tool can also be used to load and run existing loca
 
 This approach simplifies the process of sharing and running models across various systems without the need for complex setups or installations.
 
+  ![Screenshot of Ollama r1](/images/llamafile_banner.png)
 
-  <img src="images/llamafile_banner.png" alt="Screenshot of Llama file banner" width="200" />
 
 ### How to use Llamafile with LLM model weights included
 
