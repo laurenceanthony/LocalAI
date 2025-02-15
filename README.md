@@ -32,16 +32,15 @@ DeepSeek-R1 is an open-source large language model designed to excel in complex 
 
 Key features include:
 
-- **Reinforcement Learning-Based Training**: Utilizes large-scale reinforcement learning to develop advanced reasoning capabilities, further enhanced through supervised fine-tuning for improved readability and coherence.  [oai_citation_attribution:0‡build.nvidia.com](https://build.nvidia.com/deepseek-ai/deepseek-r1/modelcard?utm_source=chatgpt.com)
+- **Reinforcement Learning-Based Training**: Utilizes large-scale reinforcement learning to develop advanced reasoning capabilities, further enhanced through supervised fine-tuning for improved readability and coherence.
 
-- **High Performance in Reasoning Benchmarks**: Demonstrates state-of-the-art results in various benchmarks, showcasing proficiency in logical inference, chain-of-thought reasoning, and real-time decision-making.  [oai_citation_attribution:1‡fireworks.ai](https://fireworks.ai/blog/deepseek-r1-deepdive?utm_source=chatgpt.com)
+- **High Performance in Reasoning Benchmarks**: Demonstrates state-of-the-art results in various benchmarks, showcasing proficiency in logical inference, chain-of-thought reasoning, and real-time decision-making.
 
   ![Screenshot of DeepSeek performance](/images/deepseek_performance.png)
 
-- **Open-Weight Accessibility**: Released under the MIT license, allowing full transparency and customization, enabling the community to leverage model weights and outputs for fine-tuning and distillation.  [oai_citation_attribution:2‡api-docs.deepseek.com](https://api-docs.deepseek.com/news/news250120?utm_source=chatgpt.com)
+- **Open-Weight Accessibility**: Released under the MIT license, allowing full transparency and customization, enabling the community to leverage model weights and outputs for fine-tuning and distillation.  
 
-- **Cost-Effective Operation**: Developed at a fraction of the cost compared to other models, utilizing fewer chips and energy, challenging the traditional approach of expensive and energy-intensive AI infrastructures.  [oai_citation_attribution:3‡reuters.com](https://www.reuters.com/sustainability/sustainable-finance-reporting/esg-watch-deepseek-poses-deep-questions-about-how-ai-will-develop-2025-02-10/?utm_source=chatgpt.com)
-
+- **Cost-Effective Operation**: Developed at a fraction of the cost compared to other models, utilizing fewer chips and energy, challenging the traditional approach of expensive and energy-intensive AI infrastructures.  
 
 
 In the sections below, DeepSeek-R1 will be used as an example, but the steps should be repeatable with any other open-source/open-weight model.
@@ -59,6 +58,31 @@ In theory, you can also use Hugging Face libraries to download and run AI models
 - **Code to run the models locally can be out-of-date**<br>
 This means that when you attempt to download and run the model, the code throws an error or doesn't produce any output.
 
+    Here is example code to run models provided by Hugging face locally
+
+    ```bash
+        from llama_cpp import Llama
+        llm = Llama.from_pretrained(
+            # repo_id="QuantFactory/Dolphin3.0-Llama3.2-1B-GGUF",
+            # filename="Dolphin3.0-Llama3.2-1B.Q2_K.gguf",
+            repo_id="unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF",
+            filename="DeepSeek-R1-Distill-Qwen-1.5B-Q2_K.gguf",
+        )
+
+        # Define conversation messages in chat format
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "What is the capital of France?"}
+        ]
+
+        # Generate response
+        response = llm.create_chat_completion(messages=messages)
+
+        # Print the model's reply
+        print(response["choices"][0]["message"]["content"])
+
+    ```
+    
 The solution is to use a more user-friendly interface to locate, download, and run AI models.
 
 ### Using LM Studio to discover, download, and run local LLMs
