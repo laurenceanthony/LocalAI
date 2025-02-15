@@ -29,7 +29,7 @@ Local AI addresses several of common concerns about AI in general:
 DeepSeek-R1 is an open-source large language model designed to excel in complex reasoning tasks across various domains, including mathematics, coding, and logical inference. This makes it an excellent model to download and star experiment with in a local context. You can read a paper describing the model [here](https://arxiv.org/pdf/2405.04434)
 
 
-  <img src="images/deepseek_paper.png" alt="Screenshot of DeepSeek paper" width="300" />
+  <img src="images/deepseek_paper.png" alt="Screenshot of DeepSeek paper" width="80%" />
 
 Key features include:
 
@@ -37,7 +37,7 @@ Key features include:
 
 - **High Performance in Reasoning Benchmarks**: Demonstrates state-of-the-art results in various benchmarks, showcasing proficiency in logical inference, chain-of-thought reasoning, and real-time decision-making.
 
-  <img src="images/deepseek_performance.png" alt="Screenshot of DeepSeek performance" width="300" />
+  <img src="images/deepseek_performance.png" alt="Screenshot of DeepSeek performance" width="80%" />
 
 - **Open-Weight Accessibility**: Released under the MIT license, allowing full transparency and customization, enabling the community to leverage model weights and outputs for fine-tuning and distillation.  
 
@@ -232,7 +232,7 @@ The main Llamafile packaging tool can also be used to load and run existing loca
 This approach simplifies the process of sharing and running models across various systems without the need for complex setups or installations.
 
 
-  <img src="images/llamafile_banner.png" alt="Screenshot of Llama file banner" width="200" />
+  <img src="images/llamafile_banner.png" alt="Screenshot of Llama file banner" width="80%" />
 
 ### How to use Llamafile with LLM model weights included
 
